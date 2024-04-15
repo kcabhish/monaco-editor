@@ -1,0 +1,73 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "Query": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" }
+            },
+            "required": ["id"]
+          },
+          "companies": { "type": "array", "items": { "$ref": "#/definitions/Company" } },
+          "job": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" }
+            },
+            "required": ["id"]
+          },
+          "jobs": { "type": "array", "items": { "$ref": "#/definitions/Job" } }
+        },
+        "required": ["company", "companies", "job", "jobs"]
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "company": { "$ref": "#/definitions/Company" }
+        },
+        "required": ["id", "date", "company"]
+      },
+      "Company": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "jobs": { "type": "array", "items": { "$ref": "#/definitions/Job" } }
+        },
+        "required": ["id", "name", "jobs"]
+      }
+    },
+    "definitions": {
+      "Company": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "jobs": { "type": "array", "items": { "$ref": "#/definitions/Job" } }
+        },
+        "required": ["id", "name", "jobs"]
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "company": { "$ref": "#/definitions/Company" }
+        },
+        "required": ["id", "date", "company"]
+      }
+    }
+  }
+  
